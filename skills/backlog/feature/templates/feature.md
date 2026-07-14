@@ -10,8 +10,10 @@
 
 ## Acceptance Criteria
 
-- {Minimum condition for the benefit to count as delivered — outcome, not implementation}
-- {3-5 total is typical; more usually means the feature needs splitting or the PO is dictating HOW, not WHAT}
+- {Minimum condition for the benefit to count as delivered — outcome, not
+  implementation}
+- {3-5 total is typical; more usually means the feature needs splitting or the
+  PO is dictating HOW, not WHAT}
 
 ## Status
 

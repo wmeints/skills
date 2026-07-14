@@ -13,7 +13,8 @@ As a {user}, I want {capability}, so that {benefit}.
 - Given {context}, when {action}, then {outcome}
 - {one bullet per scenario, including edge/negative cases}
 
-**Explicitly out of scope:** {anything deliberately deferred to keep this story Small, so it's clear it was cut on purpose, not forgotten}
+**Explicitly out of scope:** {anything deliberately deferred to keep this story
+Small, so it's clear it was cut on purpose, not forgotten}
 
 ## Status
 
