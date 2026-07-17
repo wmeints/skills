@@ -2,8 +2,8 @@
 
 Claude Code skills that interview you, propose a well-formed artifact, and record
 it to disk. Each one enforces the quality bar that actually applies to the thing
-you're writing, instead of one generic "write a document" template — and none of
-them writes anything until you've confirmed the draft.
+you're writing, instead of one generic "write a document" template — and no
+artifact gets written until you've confirmed the draft.
 
 ## Categories
 
@@ -32,7 +32,11 @@ existing arc42 document, often in several sections at once.
 
 | Skill        | Command         | Quality bar                                                                       | Writes to                        |
 | ------------ | --------------- | --------------------------------------------------------------------------------- | -------------------------------- |
+| Setup arc42  | `/setup-arc42`  | Structure only — canonical headings, no invented content under them               | `docs/architecture/NN_*.md` (12 files) |
 | Quality goal | `/quality-goal` | Falsifiable scenario — if no observation could show you missed it, it's a wish    | arc42 §1.2, §4 and §10 |
+
+Start with `/setup-arc42` to lay down the skeleton, then use `/quality-goal` to
+fill in §1.2, §4 and §10.
 
 ## Install
 
@@ -64,8 +68,8 @@ the directory is all that's needed.
 
 ## Usage
 
-Run the matching slash command, e.g. `/epic` or `/quality-goal`. Every skill
-follows the same shape:
+Run the matching slash command, e.g. `/epic` or `/quality-goal`. Most skills are
+**interview skills** and follow the same shape:
 
 1. Interviews you one question at a time, pushing back on vagueness and
    solution-first thinking — and, depending on the skill, on missing hypotheses,
@@ -74,6 +78,11 @@ follows the same shape:
 3. Writes the file — auto-numbered against whatever's already in the target
    folder for backlog items, or inserted into the right sections of the existing
    document for architecture skills.
+
+`/setup-arc42` is the exception: it's a **scaffolding skill**. There's nothing to
+interview you about, so it writes the empty arc42 section files straight away —
+headings only, no invented content under them. It won't overwrite an arc42
+document that already exists; if it finds one, it stops and asks first.
 
 ## License
 
