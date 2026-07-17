@@ -34,9 +34,22 @@ existing arc42 document, often in several sections at once.
 | ------------ | --------------- | --------------------------------------------------------------------------------- | -------------------------------- |
 | Setup arc42  | `/setup-arc42`  | Structure only — canonical headings, no invented content under them               | `docs/architecture/NN_*.md` (12 files) |
 | Quality goal | `/quality-goal` | Falsifiable scenario — if no observation could show you missed it, it's a wish    | arc42 §1.2, §4 and §10 |
+| Constraint   | `/constraint`   | Restricts design freedom — and earns its place, or gets linked instead of restated | arc42 §2 |
 
 Start with `/setup-arc42` to lay down the skeleton, then use `/quality-goal` to
-fill in §1.2, §4 and §10.
+fill in §1.2, §4 and §10, and `/constraint` for §2.
+
+`/constraint` is mostly a **triage** skill — three of its four rulings send you
+somewhere else. It applies arc42's actual test (*does this restrict the
+architect's freedom of design, implementation, or process decisions?*) rather than
+the popular one (*"was it imposed on us?"*), which
+[arc42's own text contradicts](https://faq.arc42.org/questions/C-2-4/): constraints
+"may be negotiable," and adherence to someone else's **decision** counts as a
+constraint. It runs arc42's rarely-cited gate first — *"try to avoid documentation
+of constraints, as somebody else might already have documented them. Refer or link
+to existing documentation"* ([FAQ C-2-3](https://faq.arc42.org/questions/C-2-3/)).
+Entries naming a measurable end are handed to `/quality-goal`; entries this team
+could overturn on its own authority go to §9.
 
 ## Install
 
