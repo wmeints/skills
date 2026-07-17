@@ -86,8 +86,16 @@ Report the directory and the number of files created. Then point at the natural
 next steps, briefly:
 
 - `/quality-goal` records a falsifiable quality goal into §1.2, §4 and §10.
+- `/constraint` rules on a candidate §2 constraint and records it — or redirects
+  it to §9, to `/quality-goal`, or to a link, which is the outcome arc42 actually
+  prefers ("try to avoid documentation of constraints").
 - §3 (context) and §5 (building blocks) are usually the first sections worth
   filling by hand — they're what every other section refers back to.
+
+§2 is worth a word of warning when you point at it: it is **not** in arc42's
+minimal documentation set ([FAQ B-4](https://faq.arc42.org/questions/B-4/)), and
+arc42 advises linking to constraints documented elsewhere rather than restating
+them. An empty §2 is a legitimate resting state, not a gap to be filled.
 
 Don't offer to fill the sections in yourself unless the user asks.
 

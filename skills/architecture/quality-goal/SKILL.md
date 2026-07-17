@@ -52,11 +52,28 @@ six"). State it and stop. Do not recommend a demotion unless asked.
 - **Push back on project goals.** A date, a budget, a team-structure wish, a
   certification deadline. arc42 is explicit: "Don't confuse them with project
   goals. They are not necessarily identical." Test: _can any architectural
-  decision meet it?_ If not, it is not a quality goal — say so and stop.
-- **Push back on constraints wearing a goal's clothes.** If the user has no
-  choice about it (a mandated technology, a regulation like PCI-DSS), it's an
-  arc42 §2 constraint, not a §1.2 goal. Test: is this something you _aim at_ and
-  could miss by degrees, or something you have _no choice about_?
+  decision meet it?_ If not, it is not a quality goal — but don't just stop:
+  a fixed date or budget usually belongs in §2 as an **organizational
+  constraint**, so hand it to **`/constraint`** rather than leaving the user
+  nowhere.
+  Be honest that arc42 disagrees with itself here, because a user who defends
+  this will get caught. For §2: [C-2-2](https://faq.arc42.org/questions/C-2-2/)
+  lists "budget, time" as organizational constraints,
+  [Tip 2-3](https://docs.arc42.org/tips/2-3/) says to disclose them, and DokChess
+  files "Schedule" under 2.2 — a worked precedent. Against:
+  [C-1-2](https://faq.arc42.org/questions/C-1-2/) lists "cost, schedule,
+  marketability" as *business quality attributes*, and Q42 treats Budget
+  Constraint as an alias of the quality *affordability*. §2 has the better
+  citation; recommend it, say the sources conflict, take the user's answer.
+- **Push back on constraints wearing a goal's clothes.** If it restricts the
+  architects' freedom rather than naming something to achieve (a mandated
+  technology, a regulation like PCI-DSS), it's an arc42 §2 constraint, not a §1.2
+  goal — hand it to **`/constraint`**. Test: is this something you _aim at_ and
+  could miss by degrees, or something that _removes options_?
+  Don't test it by asking who chose it. arc42's constraints "may be negotiable,
+  though" (§2 Motivation), and [FAQ C-2-2](https://faq.arc42.org/questions/C-2-2/)
+  counts adherence to someone else's **decisions** as a constraint — so a team
+  having picked something itself does not make it a goal.
 - **Push back on "you can't measure that."** If the user says a quality is
   inherently unmeasurable (usually about maintainability or flexibility), they
   have reached for a _usage_ scenario where a **change scenario** belongs. Switch
