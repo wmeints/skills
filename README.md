@@ -1,11 +1,16 @@
-# Backlog Skills
+# Skills
 
-Claude Code skills that interview you, propose a well-formed backlog item, and
-record it to disk — from the product requirements down through the four
-altitudes of an agile backlog: **PRD → initiative → epic → feature → story**.
+Claude Code skills that interview you, propose a well-formed artifact, and record
+it to disk. Each one enforces the quality bar that actually applies to the thing
+you're writing, instead of one generic "write a document" template — and none of
+them writes anything until you've confirmed the draft.
 
-Each skill enforces the quality bar that actually applies at its level, instead
-of one generic "write a ticket" template:
+## Categories
+
+### Backlog
+
+From the product requirements down through the four altitudes of an agile
+backlog: **PRD → initiative → epic → feature → story**.
 
 | Skill      | Command       | Quality bar                                                                 | Writes to                              |
 | ---------- | ------------- | --------------------------------------------------------------------------- | -------------------------------------- |
@@ -18,6 +23,16 @@ of one generic "write a ticket" template:
 The philosophy behind why each level looks the way it does — and how to use the
 skills together — is written up in
 [`docs/backlog-management.md`](docs/backlog-management.md).
+
+### Architecture
+
+Skills for [arc42](https://arc42.org/) architecture documentation. Unlike a
+backlog item, these artifacts aren't standalone files — they land inside an
+existing arc42 document, often in several sections at once.
+
+| Skill        | Command         | Quality bar                                                                       | Writes to                        |
+| ------------ | --------------- | --------------------------------------------------------------------------------- | -------------------------------- |
+| Quality goal | `/quality-goal` | Falsifiable scenario — if no observation could show you missed it, it's a wish    | arc42 §1.2, §4 and §10 |
 
 ## Install
 
@@ -41,27 +56,24 @@ Copy the skill directory you want into your Claude Code skills folder:
 cp -r skills/backlog/epic ~/.claude/skills/epic
 
 # Or project-scoped
-cp -r skills/backlog/epic .claude/skills/epic
+cp -r skills/architecture/quality-goal .claude/skills/quality-goal
 ```
 
-Repeat for `prd`, `initiative`, `feature`, and `story`. Each skill is self-contained —
-`SKILL.md` plus a `templates/` folder — so copying the directory is all that's
-needed.
+Each skill is self-contained — `SKILL.md` plus a `templates/` folder — so copying
+the directory is all that's needed.
 
 ## Usage
 
-Run the matching slash command for the altitude you're working at, e.g. `/epic`.
-Each skill:
+Run the matching slash command, e.g. `/epic` or `/quality-goal`. Every skill
+follows the same shape:
 
-1. Interviews you one question at a time, pushing back on vagueness,
-   solution-first thinking, and — depending on the level — missing hypotheses,
-   oversized scope, or failed INVEST checks.
+1. Interviews you one question at a time, pushing back on vagueness and
+   solution-first thinking — and, depending on the skill, on missing hypotheses,
+   oversized scope, failed INVEST checks, or unfalsifiable quality goals.
 2. Proposes the full draft back to you and waits for confirmation.
-3. Writes the file, auto-numbered against whatever's already in the target
-   folder.
-
-See [`docs/backlog-management.md`](docs/backlog-management.md) for the reasoning
-behind each level and worked examples.
+3. Writes the file — auto-numbered against whatever's already in the target
+   folder for backlog items, or inserted into the right sections of the existing
+   document for architecture skills.
 
 ## License
 
