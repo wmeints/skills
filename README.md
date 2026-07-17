@@ -36,8 +36,16 @@ existing arc42 document, often in several sections at once.
 | Quality goal | `/quality-goal` | Falsifiable scenario — if no observation could show you missed it, it's a wish    | arc42 §1.2, §4 and §10 |
 | Constraint   | `/constraint`   | Restricts design freedom — and earns its place, or gets linked instead of restated | arc42 §2 |
 
-Start with `/setup-arc42` to lay down the skeleton, then use `/quality-goal` to
-fill in §1.2, §4 and §10, and `/constraint` for §2.
+There's **no fixed order** here — unlike the backlog ladder, architecture
+knowledge doesn't arrive in a tidy sequence, so run whichever skill matches what
+you just learned. The one thing worth running first is `/setup-arc42`, so the
+correct layout exists for the others to write into.
+
+Diagrams are worth deciding on up front: I recommend **mermaid** with the **C4
+model**'s levels, recorded in your `AGENTS.md` or `CLAUDE.md` so it holds across
+conversations rather than being repeated per prompt. The reasoning is in
+[`docs/architecture-documentation.md`](docs/architecture-documentation.md),
+along with the rest of the thinking behind this category.
 
 `/constraint` is mostly a **triage** skill — three of its four rulings send you
 somewhere else. It applies arc42's actual test (*does this restrict the
