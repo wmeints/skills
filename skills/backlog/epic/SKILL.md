@@ -75,6 +75,11 @@ Once confirmed:
 4. Read the layout from [`templates/epic.md`](./templates/epic.md) (relative to
    this skill's own directory, not the project) and write the file with every
    `{placeholder}` filled in from the interview, structure otherwise unchanged.
+5. Create the GitHub issue using `gh issue create` with the appropriate flags:
+   - `--type Epic` to set the issue type (requires gh v2.94.0+, type configured at org level)
+   - `--parent <initiative-number>` if the user provided a parent initiative (links via GitHub's sub-issue hierarchy)
+   The template body now omits the title and parent references — those are handled by
+   the issue title and `--parent` flag. If no parent initiative was named, skip `--parent`.
 
 Never leave a section out. If the interview genuinely surfaced only one leading
 indicator, that's fine — list just the one, don't pad it.

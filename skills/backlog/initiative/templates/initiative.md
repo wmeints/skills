@@ -1,5 +1,3 @@
-# {Initiative Name}
-
 ## Why Now
 
 {The problem or opportunity, for whom, and why now rather than later.}
@@ -15,3 +13,7 @@
 ## Status
 
 {Not started / Active / Done / Dropped}
+
+## GitHub Issue
+
+{gh issue create --type Initiative}

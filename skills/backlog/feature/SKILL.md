@@ -79,6 +79,11 @@ Once confirmed:
    (relative to this skill's own directory, not the project) and write the file
    with every `{placeholder}` filled in from the interview, structure otherwise
    unchanged.
+5. Create the GitHub issue using `gh issue create` with the appropriate flags:
+   - `--type Feature` to set the issue type (requires gh v2.94.0+, type configured at org level)
+   - `--parent <epic-number>` to link under the parent epic via GitHub's sub-issue hierarchy
+   The template body now omits the title and parent references — those are handled by
+   the issue title and `--parent` flag.
 
 Never leave a section out. If the interview genuinely surfaced only one
 acceptance criterion, that's fine — list just the one, don't pad it.

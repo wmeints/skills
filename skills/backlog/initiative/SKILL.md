@@ -76,6 +76,10 @@ Once confirmed:
    (relative to this skill's own directory, not the project) and write the file
    with every `{placeholder}` filled in from the interview, structure otherwise
    unchanged.
+5. Create the GitHub issue using `gh issue create` with the appropriate flags:
+   - `--type Initiative` to set the issue type (requires gh v2.94.0+, type configured at org level)
+   - No `--parent` flag needed — initiatives sit at the top of the hierarchy.
+   The template body now omits the title — that is handled by the issue title.
 
 Never leave a section out.
 
