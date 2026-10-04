@@ -1,109 +1,52 @@
 # Skills
 
-Claude Code skills that interview you, propose a well-formed artifact, and record
-it to disk. Each one enforces the quality bar that actually applies to the thing
-you're writing, instead of one generic "write a document" template — and no
-artifact gets written until you've confirmed the draft.
+This repository contains my personal set of skills and agents I use for 
+open-source projects. Please follow the getting started steps to configure the
+skills in your project.
 
-## Categories
+## Project structure
 
-### Backlog
+The skills in the repository make a couple of assumptions about the project
+structure. You're free to do something else, but the skills will behave better
+when you have the structure in place.
 
-From the product requirements down through the four altitudes of an agile
-backlog: **PRD → initiative → epic → feature → story**.
+### Engineering documentation
 
-| Skill      | Command       | Quality bar                                                                 | Writes to                              |
-| ---------- | ------------- | --------------------------------------------------------------------------- | -------------------------------------- |
-| PRD        | `/prd`        | Solution-agnostic requirements — the "what," not the "how"                  | `docs/product/requirements.md`         |
-| Initiative | `/initiative` | Outcome-flavored, coarse, DEEP "detailed appropriately"                     | `docs/initiatives/NNNN-<slug>.md`      |
-| Epic       | `/epic`       | Falsifiable hypothesis (problem, If/Then, leading indicators, MVP boundary) | `docs/product/epics/NNNN-<slug>.md`    |
-| Feature    | `/feature`    | Benefit hypothesis + outcome-focused acceptance criteria                    | `docs/product/features/NNNN-<slug>.md` |
-| Story      | `/story`      | Full INVEST — Independent, Negotiable, Valuable, Estimable, Small, Testable | `docs/product/stories/NNNN-<slug>.md`  |
+Place all engineering docs in `docs/engineering` in your project. Add a 
+top-level `README.md` file in the directory with a table of contents of what's
+there.
 
-The philosophy behind why each level looks the way it does — and how to use the
-skills together — is written up in
-[`docs/backlog-management.md`](docs/backlog-management.md).
+I typically add the following elements:
 
-### Architecture
+- How error handling should be done
+- Resilience patterns that the agent must follow
+- Command-line parsing structures 
+- How logging and tracing should be handled
+- How to create a release of the project
 
-Skills for [arc42](https://arc42.org/) architecture documentation. Unlike a
-backlog item, these artifacts aren't standalone files — they land inside an
-existing arc42 document, often in several sections at once.
+### Architecture documentation
 
-| Skill        | Command         | Quality bar                                                                       | Writes to                        |
-| ------------ | --------------- | --------------------------------------------------------------------------------- | -------------------------------- |
-| Setup arc42  | `/setup-arc42`  | Structure only — canonical headings, no invented content under them               | `docs/architecture/NN_*.md` (12 files) |
-| Quality goal | `/quality-goal` | Falsifiable scenario — if no observation could show you missed it, it's a wish    | arc42 §1.2, §4 and §10 |
-| Constraint   | `/constraint`   | Restricts design freedom — and earns its place, or gets linked instead of restated | arc42 §2 |
+I prefer to use [arc42](https://docs.arc42.org) to record my architecture docs.
+You can use something else, as long as you have a `docs/architecture` directory
+in your repo with a top-level `README.md` with the table of contents.
 
-There's **no fixed order** here — unlike the backlog ladder, architecture
-knowledge doesn't arrive in a tidy sequence, so run whichever skill matches what
-you just learned. The one thing worth running first is `/setup-arc42`, so the
-correct layout exists for the others to write into.
+### Agent instructions
 
-Diagrams are worth deciding on up front: I recommend **mermaid** with the **C4
-model**'s levels, recorded in your `AGENTS.md` or `CLAUDE.md` so it holds across
-conversations rather than being repeated per prompt. The reasoning is in
-[`docs/architecture-documentation.md`](docs/architecture-documentation.md),
-along with the rest of the thinking behind this category.
+I rely on `AGENTS.md` or `CLAUDE.md` to have a top-level set of instructions.
+You should have at least the following elements in your agent instruction file:
 
-`/constraint` is mostly a **triage** skill — three of its four rulings send you
-somewhere else. It applies arc42's actual test (*does this restrict the
-architect's freedom of design, implementation, or process decisions?*) rather than
-the popular one (*"was it imposed on us?"*), which
-[arc42's own text contradicts](https://faq.arc42.org/questions/C-2-4/): constraints
-"may be negotiable," and adherence to someone else's **decision** counts as a
-constraint. It runs arc42's rarely-cited gate first — *"try to avoid documentation
-of constraints, as somebody else might already have documented them. Refer or link
-to existing documentation"* ([FAQ C-2-3](https://faq.arc42.org/questions/C-2-3/)).
-Entries naming a measurable end are handed to `/quality-goal`; entries this team
-could overturn on its own authority go to §9.
+- **What this is:** describes the purpose of the project in two sentences.
+- **Commands:** list the `format`, `lint`, `test` and `build` commands here.
+- **Documentation:** list a link to the architecture and engineering docs.
+- **Definition of done:** specify when a task is completed.
 
-## Install
+## Getting started
 
-```sh
-# All skills
-npx skills add wmeints/skills --all
+Install the skills with the following command:
 
-# Just one, e.g. epic
-npx skills add wmeints/skills --skill epic
+```bash
+npx skills install https://github.com/wmeints/skills
 ```
-
-Uses the [`skills` CLI](https://www.npmjs.com/package/skills) — add `-g` to
-install globally (`~/.claude/skills/`) instead of project-scoped.
-
-### Manual install
-
-Copy the skill directory you want into your Claude Code skills folder:
-
-```sh
-# Personal (all projects)
-cp -r skills/backlog/epic ~/.claude/skills/epic
-
-# Or project-scoped
-cp -r skills/architecture/quality-goal .claude/skills/quality-goal
-```
-
-Each skill is self-contained — `SKILL.md` plus a `templates/` folder — so copying
-the directory is all that's needed.
-
-## Usage
-
-Run the matching slash command, e.g. `/epic` or `/quality-goal`. Most skills are
-**interview skills** and follow the same shape:
-
-1. Interviews you one question at a time, pushing back on vagueness and
-   solution-first thinking — and, depending on the skill, on missing hypotheses,
-   oversized scope, failed INVEST checks, or unfalsifiable quality goals.
-2. Proposes the full draft back to you and waits for confirmation.
-3. Writes the file — auto-numbered against whatever's already in the target
-   folder for backlog items, or inserted into the right sections of the existing
-   document for architecture skills.
-
-`/setup-arc42` is the exception: it's a **scaffolding skill**. There's nothing to
-interview you about, so it writes the empty arc42 section files straight away —
-headings only, no invented content under them. It won't overwrite an arc42
-document that already exists; if it finds one, it stops and asks first.
 
 ## License
 
